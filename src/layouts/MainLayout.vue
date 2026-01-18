@@ -1,81 +1,84 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+  <q-layout view="lHh Lpr lFf" class="bg-white text-black">
+    <q-header
+      class="bg-transparent text-black q-py-sm absolute-top"
+      :class="{ 'bg-white shadow-2': scrollPosition > 50 }"
+    >
+      <q-toolbar class="container">
+        <q-btn flat no-caps dense class="q-mr-sm" to="/">
+          <q-icon name="school" size="md" class="q-mr-sm" />
+          <span class="text-h6 text-weight-bold">EduMaster</span>
+        </q-btn>
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-space />
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div class="gt-sm">
+          <q-btn flat no-caps label="Home" to="/" />
+          <q-btn flat no-caps label="Features" href="#features" />
+          <q-btn flat no-caps label="About" href="#about" />
+          <q-btn flat no-caps label="Contact" href="#contact" />
+        </div>
+
+        <q-space />
+
+        <div>
+          <q-btn flat no-caps label="Login" class="q-mr-sm" />
+          <q-btn
+            unelevated
+            color="primary"
+            text-color="white"
+            label="Get Started"
+            no-caps
+            class="q-px-md rounded-borders"
+          />
+        </div>
       </q-toolbar>
     </q-header>
-
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
-
-        <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />
-      </q-list>
-    </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer class="bg-black text-white q-py-lg">
+      <div class="container text-center">
+        <div class="text-h6 q-mb-md">EduMaster</div>
+        <div class="q-gutter-sm">
+          <q-btn flat round icon="fab fa-facebook" size="sm" />
+          <q-btn flat round icon="fab fa-twitter" size="sm" />
+          <q-btn flat round icon="fab fa-instagram" size="sm" />
+          <q-btn flat round icon="fab fa-linkedin" size="sm" />
+        </div>
+        <div class="text-grey-5 q-mt-md text-caption">© 2026 EduMaster. All rights reserved.</div>
+      </div>
+    </q-footer>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev',
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework',
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev',
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev',
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev',
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev',
-  },
-]
+const scrollPosition = ref(0)
 
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+const updateScroll = () => {
+  scrollPosition.value = window.scrollY
 }
+
+onMounted(() => {
+  window.addEventListener('scroll', updateScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateScroll)
+})
 </script>
+
+<style scoped>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.rounded-borders {
+  border-radius: 8px;
+}
+</style>
