@@ -1,59 +1,67 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section text-center relative-position">
+    <section class="hero-section relative-position overflow-hidden">
       <div class="circle-bg-1"></div>
       <div class="container relative-position z-top">
-        <div class="q-mb-md">
-          <q-badge
-            color="grey-2"
-            text-color="black"
-            class="q-px-md q-py-sm rounded-badge text-weight-bold shadow-1"
-          >
-            New: Version 2.0 Released
-          </q-badge>
-        </div>
+        <div class="row items-center q-col-gutter-xl">
+          <!-- Text Content (Left) -->
+          <div class="col-12 col-md-6 text-left">
+            <div class="q-mb-md">
+              <q-badge
+                color="grey-2"
+                text-color="black"
+                class="q-px-md q-py-sm rounded-badge text-weight-bold shadow-1"
+              >
+                New: Version 2.0 Released
+              </q-badge>
+            </div>
 
-        <h1 class="text-h2 text-weight-bolder q-mb-lg hero-title text-black">
-          The Ultimate <span class="text-secondary">Tuition Management</span><br />
-          Solution.
-        </h1>
+            <h1 class="text-h2 text-weight-bolder q-mb-md hero-title text-black">
+              The Ultimate
+              <span class="text-primary">Tuition Management</span><br />
+              Solution.
+            </h1>
 
-        <p class="text-grey-8 text-h5 q-mb-xl hero-subtitle weight-medium">
-          Streamline your entire tuition class workflow. From student enrollment to automated
-          payments and attendance tracking.
-        </p>
+            <p class="text-grey-8 text-h5 q-mb-xl hero-subtitle weight-medium q-ml-none">
+              Streamline your entire tuition class workflow. From student enrollment to automated
+              payments and attendance tracking.
+            </p>
 
-        <div class="row justify-center q-gutter-md q-mb-xl">
-          <q-btn
-            unelevated
-            color="black"
-            text-color="white"
-            size="lg"
-            label="Start Free Trial"
-            no-caps
-            class="q-px-xl q-py-sm rounded-borders text-weight-bold"
-          />
-          <q-btn
-            outline
-            color="black"
-            size="lg"
-            no-caps
-            class="q-px-xl q-py-sm rounded-borders text-weight-bold"
-          >
-            <q-icon left name="play_circle" />
-            <div>Watch Demo</div>
-          </q-btn>
-        </div>
+            <div class="row q-gutter-md q-mb-xl">
+              <q-btn
+                unelevated
+                color="black"
+                text-color="white"
+                size="lg"
+                label="Start Free Trial"
+                no-caps
+                class="q-px-xl q-py-sm rounded-borders text-weight-bold"
+              />
+              <q-btn
+                outline
+                color="black"
+                size="lg"
+                no-caps
+                class="q-px-xl q-py-sm rounded-borders text-weight-bold"
+              >
+                <q-icon left name="play_circle" />
+                <div>Watch Demo</div>
+              </q-btn>
+            </div>
+          </div>
 
-        <!-- Hero Image Wrapper -->
-        <div class="hero-image-container q-mx-auto shadow-22 rounded-xl overflow-hidden bg-white">
-          <q-img
-            src="../assets/tuition_hero_modern_1768725635182.png"
-            class="hero-image"
-            fit="cover"
-            position="50% 20%"
-          />
+          <!-- Hero Image (Right) -->
+          <div class="col-12 col-md-6">
+            <div class="hero-image-container shadow-22 rounded-xl overflow-hidden bg-white">
+              <q-img
+                src="../assets/tuition_hero_modern_1768725635182.png"
+                class="hero-image full-height"
+                fit="cover"
+                position="50% 20%"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
